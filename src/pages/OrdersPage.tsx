@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { ordersApi } from '../api/client';
 import { ShoppingCart, Package, ChevronDown, CheckCircle2, Clock, CreditCard } from 'lucide-react';
+import { formatCambodiaTime } from '../utils/date';
 
 const STATUS_OPTIONS = [
   { value: 'pending', label: '1. Order Placed', color: 'bg-amber-50 text-amber-800 border-amber-200' },
@@ -131,7 +132,7 @@ export function OrdersPage() {
                         </span>
                       </div>
                       <p className="text-xs text-gray-500 mt-0.5 font-medium">
-                        {order.user?.name || 'Customer'} • {order.payment_method?.toUpperCase() || 'KHQR'} • {new Date(order.created_at).toLocaleString()}
+                        {order.user?.name || 'Customer'} • {order.payment_method?.toUpperCase() || 'KHQR'} • {formatCambodiaTime(order.created_at)}
                       </p>
                     </div>
                   </div>

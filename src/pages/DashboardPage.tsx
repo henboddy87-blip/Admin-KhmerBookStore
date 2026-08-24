@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { dashboardApi } from '../api/client';
 import { StatsCard } from '../components/StatsCard';
 import { BookOpen, FolderTree, ShoppingCart, Users, DollarSign, TrendingUp, LayoutDashboard } from 'lucide-react';
+import { formatCambodiaTime } from '../utils/date';
 
 export function DashboardPage() {
   const { token } = useAuth();
@@ -109,7 +110,7 @@ export function DashboardPage() {
                       <StatusBadge status={order.status} />
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500">
-                      {new Date(order.created_at).toLocaleDateString()}
+                      {formatCambodiaTime(order.created_at)}
                     </td>
                   </tr>
                 ))}
